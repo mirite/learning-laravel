@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['listings' => \App\Models\Listing::all()]);
 });
+
+Route::get('/about/{name}', function ($name) {
+    return view('welcome', ['name'=>$name]);
+})->where('name','[a-z]+');
