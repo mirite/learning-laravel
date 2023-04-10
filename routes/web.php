@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/about/{name}', function ($name) {
-    return view('welcome', ['name'=>$name]);
+    return view('welcome', ['name'=>$name, 'listings' => \App\Models\Listing::all()]);
 })->where('name','[a-z]+');
